@@ -4023,6 +4023,7 @@ llvm::Triple::ArchType darwin::getArchTypeForDarwinArchName(StringRef Str) {
     .Case("nvptx64", llvm::Triple::nvptx64)
     .Case("amdil", llvm::Triple::amdil)
     .Case("spir", llvm::Triple::spir)
+    .Case("usc", llvm::Triple::usc)
     .Default(llvm::Triple::UnknownArch);
 }
 
