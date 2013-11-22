@@ -61,6 +61,7 @@ LOCAL_STATIC_LIBRARIES := \
   libLLVMX86Desc \
   libLLVMX86AsmPrinter \
   libLLVMX86Utils \
+  libLLVMIRReader \
   libLLVMAsmParser \
   libLLVMAsmPrinter \
   libLLVMBitReader \
@@ -71,6 +72,7 @@ LOCAL_STATIC_LIBRARIES := \
   libLLVMInstCombine \
   libLLVMInstrumentation \
   libLLVMCodeGen \
+  libLLVMObject \
   libLLVMLinker \
   libLLVMMC \
   libLLVMMCParser \
@@ -80,10 +82,16 @@ LOCAL_STATIC_LIBRARIES := \
   libLLVMVectorize \
   libLLVMAnalysis \
   libLLVMCore \
+  libLLVMOption \
   libLLVMSupport \
   libLLVMTarget
 
-LOCAL_LDLIBS += -lpthread -lm -ldl
+LOCAL_LDLIBS += -lm
+ifdef USE_MINGW
+LOCAL_LDLIBS += -limagehlp
+else
+LOCAL_LDLIBS += -lpthread -ldl
+endif
 
 include $(CLANG_HOST_BUILD_MK)
 include $(CLANG_TBLGEN_RULES_MK)
